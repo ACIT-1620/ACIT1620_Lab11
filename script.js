@@ -302,6 +302,31 @@ function renderCreate(obj) {
   cancelButton.innerHTML = 'Cancel'
   buttonContainer.appendChild(cancelButton)
 
+  //(7): event listener for the cancel button
+  cancelButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    
+    cleanUpCreate()
+    renderIndex(contactList)
+  
+  })
+
+  //(8 + 9): add new contact object, append to contactList, re-render the index page with new contact in it
+  submitButton.addEventListener('click', (e)=> {
+    e.preventDefault()
+    
+    newObj = {
+      name: inputName.value,
+      email: inputEmail.value,
+      phone: inputPhone.value,
+      address: inputAddress.value,
+    }
+
+    contactList.push(newObj)
+    
+    cleanUpCreate()
+    renderIndex(contactList)
+  })
 }
 
 
